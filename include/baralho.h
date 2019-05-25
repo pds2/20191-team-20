@@ -15,5 +15,5 @@ class Baralho{
         void setTipo(string _tipo);
         string getTipo();
 };
-
+//
 #endif

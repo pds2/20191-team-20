@@ -27,5 +27,5 @@ class Jogador{
         vector<Carta> getCartasEmMao();
 
 };
-
+//
 #endif

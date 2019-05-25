@@ -12,5 +12,5 @@ class CartaMovimento : public Carta{
         void executaFuncao() override;
         int getMovimento();
 };
-
+//
 #endif

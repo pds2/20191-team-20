@@ -13,5 +13,5 @@ class CartaDefesa : public Carta{
         void executaFuncao() override;
         int getDefesa();
 };
-
+//
 #endif

@@ -18,5 +18,5 @@ class Carta{
         string getTipoCarta();
         virtual void executaFuncao();
 };
-
+//
 #endif

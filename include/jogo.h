@@ -9,5 +9,5 @@ class Jogo{
         void atualizaTela(Jogador jog1, Jogador jog2, Baralho bar, Carta monte[]);
         void passaVez(Jogador jog);
 };
-
+//
 #endif
