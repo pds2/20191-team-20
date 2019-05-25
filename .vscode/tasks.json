@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build C++ project",
+            "type": "shell",
+            "command": "gcc",
+            "args":[
+                "-g",
+                "${file}",
+                "-lstdc++",
+                "-o",
+                "${workspaceRoot}\\${fileBasename}.exe",
+                "-I",
+                "C:\\Users\\Cris\\Desktop\\One Drive\\OneDrive\\UFMG\\PDS 2 - UFMG\\EP Jogo\\include"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "Build & run C++ project",
+            "type": "shell",
+            "command": ".\\${fileBasename}.exe", 
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+        }
+    ]
+}
