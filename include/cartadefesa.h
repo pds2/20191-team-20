@@ -1,7 +1,7 @@
 #ifndef HEADER_FILE_CARTADEFESA
 #define HEADER_FILE_CARTADEFESA
 #include <iostream>
-#include "Carta.h"
+#include "carta.h"
 
 using namespace std;
 

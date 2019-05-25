@@ -1,8 +1,8 @@
-#ifndef HEADER_FILE
-#define HEADER_FILE
+#ifndef HEADER_FILE_JOGADOR
+#define HEADER_FILE_JOGADOR
 #include <iostream>
 #include <vector>
-#include "Carta.h"
+#include "carta.h"
 
 using namespace std;
 
@@ -10,7 +10,7 @@ class Jogador{
     private:
         string nome;
         string naipeEspecial;
-        int qntVidas;
+        string qntVidas[10];
         int posicaoVetor;
         vector<Carta> cartasEmMao;
     public:
@@ -22,10 +22,10 @@ class Jogador{
         void removeCartaEmMao(vector<Carta> _cartas);
         string getNome();
         string getNaipeEsp();
-        int getVida();
+        string* getVida();
         int getPosicao();
         vector<Carta> getCartasEmMao();
 
 };
-//
+
 #endif

@@ -12,7 +12,12 @@ void Jogador::setNaipe(string _naipe){
 }
 
 void Jogador::setVida(int _vida){
-    this->qntVidas = _vida;
+    for(int i=0;i<10;i++){
+        qntVidas[i] = " ";
+    }
+    for(int i=0;i<_vida;i++){
+        qntVidas[i] = "X";
+    }
 }
 
 void Jogador::setPosicao(int _posicao){
@@ -59,6 +64,25 @@ void Jogador::removeCartaEmMao(vector<Carta> _cartas){
 
 }
 
+string Jogador::getNome(){
+    return this->nome;
+}
+
+string Jogador::getNaipeEsp(){
+    return this->naipeEspecial;
+}
+
+ string* Jogador::getVida(){
+    return this->qntVidas;
+}
+
+int Jogador::getPosicao(){
+    return this->posicaoVetor;
+}
+
+vector<Carta> Jogador::getCartasEmMao(){
+    return this->cartasEmMao;
+}
 
 
 

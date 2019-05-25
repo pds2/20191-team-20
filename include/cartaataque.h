@@ -1,7 +1,7 @@
 #ifndef HEADER_FILE_CARTATAQUE
 #define HEADER_FILE_CARTATAQUE
 #include <iostream>
-#include "Carta.h"
+#include "carta.h"
 
 using namespace std;
 
@@ -13,5 +13,5 @@ class CartaAtaque : public Carta{
         void executaFuncao() override;
         int getDano();
 };
-//
+
 #endif

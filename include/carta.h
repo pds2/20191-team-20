@@ -16,7 +16,7 @@ class Carta{
         string getNaipe();
         string getCaracter();
         string getTipoCarta();
-        virtual void executaFuncao();
+        void executaFuncao();
 };
-//
+
 #endif

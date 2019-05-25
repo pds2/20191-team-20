@@ -12,7 +12,11 @@
                 "-o",
                 "${workspaceRoot}\\${fileBasename}.exe",
                 "-I",
-                "C:\\Users\\Cris\\Desktop\\One Drive\\OneDrive\\UFMG\\PDS 2 - UFMG\\EP Jogo\\include"
+                "C:\\Users\\Cris\\Desktop\\One Drive\\OneDrive\\UFMG\\PDS 2 - UFMG\\EP Jogo\\20191-team-20\\include",
+                "-I",
+                "C:\\Users\\Cris\\Desktop\\One Drive\\OneDrive\\UFMG\\PDS 2 - UFMG\\EP Jogo\\20191-team-20\\cpp",
+                "-I",
+                "C:\\Users\\Cris\\Desktop\\One Drive\\OneDrive\\UFMG\\PDS 2 - UFMG\\EP Jogo\\20191-team-20\\src"
             ],
             "group": {
                 "kind": "build",
