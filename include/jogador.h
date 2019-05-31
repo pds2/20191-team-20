@@ -8,12 +8,12 @@ using namespace std;
 
 class Jogador{
     private:
-        string nome;
         string naipeEspecial;
         string qntVidas[10];
         int posicaoVetor;
         vector<Carta> cartasEmMao;
     public:
+        string nome;
         void setNome(string _nome);
         void setNaipe(string _naipe);
         void setVida(int _vida);

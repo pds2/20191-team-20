@@ -10,7 +10,7 @@ class CartaDefesa : public Carta{
         int qntDefesa;
         int tipoDefesa;
     public:
-        void executaFuncao() override;
+        void executaFuncao();
         int getDefesa();
 };
 //

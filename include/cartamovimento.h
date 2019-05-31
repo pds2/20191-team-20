@@ -9,7 +9,7 @@ class CartaMovimento : public Carta{
     private:
         int qntMovimento;
     public:
-        void executaFuncao() override;
+        void executaFuncao();
         int getMovimento();
 };
 
