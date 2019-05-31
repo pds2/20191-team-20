@@ -1,7 +1,7 @@
 #include <iostream>
-#include "jogo.cpp"
-#include "jogador.cpp"
-#include "carta.cpp"
+#include "headers/jogo.h"
+#include "headers/jogador.h"
+#include "headers/carta.h"
 
 int main() {
     Jogador j1,j2;
@@ -9,8 +9,11 @@ int main() {
     Baralho br;
     Carta monte[10];
 
-    j1.setNaipe("#");
-    j2.setNaipe("$");
+    br.criarBaralho();
+    j1.setNome("1");
+    j1.setNaipe(j1.nome);
+    j2.setNome("2");
+    j2.setNaipe(j2.nome);
     j1.setVida(5);
     j2.setVida(7);
     jogo.setRoundJog1(4);
