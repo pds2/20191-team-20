@@ -1,14 +1,28 @@
 #include <iostream>
-#include "jogador.h"
+#include "headers/jogador.h"
+#include "headers/jogo.h"
 
 using namespace std;
 
 void Jogador::setNome(string _nome){
-    this->nome = _nome;
+    cout << "\n\n\n\n";
+    cout << "                      ########            ##   ##          ##      ||                    "<< endl;
+    cout << "                      ##        ##   ##   ##  ##           ##  @@  ||                    "<< endl;
+    cout << "                      ######     ## ##    ## ##   @@@@     ##      ||||)   @   @    #### "<< endl;
+    cout << "                      ##          ###     ####   @    @    ##  $$  ||  |)  @   @   ##    "<< endl;
+    cout << "                      ##         ## ##    ## ##  @    @@   ##  $$  ||  /)  @   @   ##    "<< endl;
+    cout << "                      ########  ##   ##   ##  ##  @@@@  @  ##  $$  ||//)    @@@ @  ##    "<< endl;
+    cout << "\n\n\n\n\n\t\t      |   "+_nome+"º Jogador, digite aqui seu nome (até 8 letras): ";
+    cin >> nome;
+    this->nome;
 }
 
 void Jogador::setNaipe(string _naipe){
-    this->naipeEspecial = _naipe;
+    cout << "\n\n\t\t      |   "+_naipe+", agora escolha seu Naipe Especial:\n\t\t      |\n\t\t      |   & <-Espadas\n\t\t      |   # <-Paus\n\t\t      |   $ <-Ouros\n\t\t      |   @ <-Copas\n\t\t      |" << endl;
+    cout << "\t\t      |   Digite aqui: ";
+    cin >> naipeEspecial;
+    system("clear");
+    this->naipeEspecial;
 }
 
 void Jogador::setVida(int _vida){
@@ -41,7 +55,7 @@ void Jogador::removeCartaEmMao(vector<Carta> _cartas){
         // For para iterar em cima das cartas que serão removidas e buscá-las na mão do jogador.
         for(int k=0;k<_cartas.size();k++){
             for(int i=0;i<cartasEmMao.size();i++){
-                if(_cartas[k].getNaipe() == cartasEmMao[i].getNaipe() 
+                if(_cartas[k].getNaipe() == cartasEmMao[i].getNaipe()
                 && _cartas[k].getCaracter() == cartasEmMao[i].getCaracter()){
                     posicoes[TAM] = i;
                     TAM++;
@@ -53,7 +67,7 @@ void Jogador::removeCartaEmMao(vector<Carta> _cartas){
             cartasEmMao.erase(cartasEmMao.begin()+posicoes[j]);
             for(int l=j+1;l<TAM;l++){
                 if(posicoes[l] > posicoes[j]){
-                    posicoes[l] -= 1; 
+                    posicoes[l] -= 1;
                 }
             }
         }

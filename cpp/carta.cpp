@@ -1,5 +1,5 @@
 #include <iostream>
-#include "carta.h"
+#include "headers/carta.h"
 
 using namespace std;
 
@@ -28,5 +28,5 @@ string Carta::getTipoCarta(){
 }
 
 void Carta::executaFuncao(){
-    
+
 }

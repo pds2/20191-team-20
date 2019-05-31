@@ -1,16 +1,16 @@
 #include <iostream>
 #include <string>
-#include "jogo.h"
+#include "headers/jogo.h"
+#include "headers/carta.h"
 
 using namespace std;
 
 void Jogo::atualizaTela(Jogador jog1, Jogador jog2, Baralho bar, Carta monte[]){
-    
-string Linha1 =  "1                  ___                    ___                                   ___                            ___       ";
-string Linha2 =  "2         Jogador |_"+jog1.getNaipeEsp()+"_|           Rounds |_"+to_string(this->getRoundJog1())+"_|            esKalibur            |_"+to_string(this->getRoundJog2())+"_| Rounds           Jogador |_"+jog2.getNaipeEsp()+"_|      ";
+
+string Linha1 =  "1\t\t\t\t\t   ___                                   ___";
+string Linha2 =  "2      "+jog1.getNome()+"\t\t\t   Rounds |_"+to_string(this->getRoundJog1())+"_|            esKalibur            |_"+to_string(this->getRoundJog2())+"_| Rounds\t\t\t"+jog2.getNome()+"";
 string Linha3 =  "3      _______________________________________           ____________            _______________________________________ ";
 string Linha4 =  "4     |   |   |   |   |   |   |   |   |   |   |         |   BARALHO  |          |   |   |   |   |   |   |   |   |   |   |";
-
 string Linha6 =  "6     |___|___|___|___|___|___|___|___|___|___|         |   |   $|   |          |___|___|___|___|___|___|___|___|___|___|";
 string Linha7 =  "7       1   2   3   4   5   6   7   8   9   10          |   | J  |   |           10   9   8   7   6   5   4   3   2   1  ";
 string Linha8 =  "8                                                       |   |    |   |                                                   ";
@@ -33,7 +33,7 @@ string Linha24 = "24    |      1    2    3    4    5    6    7  |     __________
 string Linha25 = "25    |_______________________________________|    | MENSAGEM AO USUÁRIO  |    |________________________________________|";
 string Linha26 = "26     ____________________________________________|                      |_____________________________________________ ";
 string Linha27 = "27    |                                                                                                                 |";
-string Linha28 = "28    | Jogador $ : Escolha uma carta 'Movimento' ou aperte 'espaço' para colher uma carta do baralho.                  |";
+string Linha28 = "28     \t\t  "+jog1.getNome()+": Escolha uma carta 'Movimento' ou aperte 'espaço' para colher uma carta do baralho.";
 string Linha29 = "29    |_________________________________________________________________________________________________________________|";
 string Linha30 = "30     ___________________________________                                             _________________________________ ";
 string Linha31 = "31    |             Ataques               |             Campo de Batalha              |             Defesas             |";
@@ -47,7 +47,7 @@ string Linha38 = "38    |            esKalibur              |         __________
 string Linha39 = "39    |  K do mesmo Naipe do Jogador = 5  |        |         Naipes          |        |            esKalibur            |";
 string Linha40 = "40    |___________________________________|        | & - Espadas   # - Paus  |        | 7 do mesmo Naipe do Jogador =-5 |";
 string Linha41 = "41                                                 | $ - Ouros     @ - Copas |        |_________________________________|";
-string Linha42 = "42                                                 |_________________________|                                           ";  
+string Linha42 = "42                                                 |_________________________|                                           ";
 
 
 cout << Linha1 << endl;
@@ -101,11 +101,11 @@ void Jogo::passaVez(Jogador jog){
 
 void Jogo::printVida(Jogador jog1, Jogador jog2){
 
-    string Linha5 =  "5     | "+jog1.getVida()[0]+" | "+jog1.getVida()[1]+" | " +jog1.getVida()[2]+ 
-    " | " +jog1.getVida()[3]+ " | " +jog1.getVida()[4]+ " | " +jog1.getVida()[5]+ 
+    string Linha5 =  "5     | "+jog1.getVida()[0]+" | "+jog1.getVida()[1]+" | " +jog1.getVida()[2]+
+    " | " +jog1.getVida()[3]+ " | " +jog1.getVida()[4]+ " | " +jog1.getVida()[5]+
     " | " +jog1.getVida()[6]+ " | " +jog1.getVida()[7]+ " | " +jog1.getVida()[8]+ " | " +jog1.getVida()[9]+ " |         |    ____    |          "+
-    "| " +jog2.getVida()[9]+ " | " +jog2.getVida()[8]+ " | " +jog2.getVida()[7]+ " | " +jog2.getVida()[6]+ 
-    " | " +jog2.getVida()[5]+ " | " +jog2.getVida()[4]+ " | " +jog2.getVida()[3]+ " | " +jog2.getVida()[2]+ 
+    "| " +jog2.getVida()[9]+ " | " +jog2.getVida()[8]+ " | " +jog2.getVida()[7]+ " | " +jog2.getVida()[6]+
+    " | " +jog2.getVida()[5]+ " | " +jog2.getVida()[4]+ " | " +jog2.getVida()[3]+ " | " +jog2.getVida()[2]+
     " | " +jog2.getVida()[1]+ " | " +jog2.getVida()[0]+ " |";
     cout<< Linha5<<endl;
 }

@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "cartaataque.h"
+#include "headers/cartaataque.h"
 
 using namespace std;
 
