@@ -1,32 +1,31 @@
 #include <iostream>
 #include "headers/baralho.h"
+#include <stack>
 
 using namespace std;
 
 void Baralho::criarBaralho(){
-/*
-    char naipe[] = {'&','$','#','@'};
-    char face[13] = {'A','2','3','4','5','6','7','8','9','10','J','Q','K'};
-    int baralho[3][12] = {0};
-    srand(time(NULL));
-    baralhar(baralho);
-    dar(baralho,face,naipe);
+    int i,j,k,m;
+        string organizado[52];
+        string cartas[]= {"A","2","3","4","5","6","7","8","9","10","J","Q","K","\0"};
+        char naipe[4] = { '&', '#', '@', '$' };
+        string baralho[52];
+        stack<int> pilha;
 
-    int ordem, lin, col;
-    for (ordem = 1; ordem <= 52; ordem++){
-        lin = rand() % 4;
-        col = rand() % 13;
-        while (locBaralho[lin][col] != 0){
-           lin = rand() % 4;
-           col = rand() % 13;
+        for(i=0; i<4; i++){
+            for (j=0; j<13; j++){
+                organizado[k] = ""+cartas[j]+""+naipe[i]+"";
+                cout << "organizado[" << k <<"] = "+organizado[k]+"" << endl;//debug
+                k++;
+            }
         }
-        locBaralho[lin][col] = ordem;
-   }*/
+
+        for(i=0; i<52; i++){
+            baralho[i]= organizado[rand()%52];
+            cout << "baralho[" << i <<"] = "+baralho[i]+"" << endl;//debug
+        }
 };
 
-void Baralho::embaralhar(){
-
-};
 
 void Baralho::setTipo(string _tipo){
     this->tipo = _tipo;
