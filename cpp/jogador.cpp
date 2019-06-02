@@ -1,6 +1,7 @@
 #include <iostream>
 #include "jogador.h"
 #include "jogo.h"
+#include <string>
 
 using namespace std;
 
@@ -13,8 +14,7 @@ void Jogador::setNome(string _nome){
     cout << "                      ##         ## ##    ## ##  @    @@   ##  $$  ||  /)  @   @   ##    "<< endl;
     cout << "                      ########  ##   ##   ##  ##  @@@@  @  ##  $$  ||//)    @@@ @  ##    "<< endl;
     cout << "\n\n\n\n\n\t\t      |   "+_nome+"º Jogador, digite aqui seu nome (até 8 letras): ";
-    cin >> nome;
-    this->nome;
+    getline(cin,nome);
 }
 
 void Jogador::setNaipe(string _naipe){
