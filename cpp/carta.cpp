@@ -27,6 +27,10 @@ string Carta::getTipoCarta(){
     return this->tipoCarta;
 }
 
-int Carta::executaFuncao(int _distancia){
+void Carta::setValor(int _distancia){
 
+}
+
+Carta::Carta(){
+    
 }

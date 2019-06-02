@@ -3,16 +3,19 @@
 #include "jogador.cpp"
 #include "carta.cpp"
 #include "baralho.cpp"
-#include<tchar.h>
 
 int main() {
-    _tsetlocale(LC_ALL, _T("portuguese"));
     Jogador j1,j2;
     Jogo jogo;
     Baralho br;
     Carta monte[10];
 
+
     br.criarBaralho();
+    br.embaralhar();
+
+
+    
     j1.setNome("1");
     j1.setNaipe(j1.nome);
     j2.setNome("2");
@@ -23,4 +26,5 @@ int main() {
     jogo.setRoundJog2(2);
 
     jogo.atualizaTela(j1,j2,br,monte);
+    
 }

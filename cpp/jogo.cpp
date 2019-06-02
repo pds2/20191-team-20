@@ -11,10 +11,10 @@ string Linha1 =  "1\t\t\t\t\t   ___                                   ___";
 string Linha2 =  "2      "+jog1.getNome()+"\t\t\t   Rounds |_"+to_string(this->getRoundJog1())+"_|            esKalibur            |_"+to_string(this->getRoundJog2())+"_| Rounds\t\t\t"+jog2.getNome()+"";
 string Linha3 =  "3      _______________________________________           ____________            _______________________________________ ";
 string Linha4 =  "4     |   |   |   |   |   |   |   |   |   |   |         |   BARALHO  |          |   |   |   |   |   |   |   |   |   |   |";
-string Linha6 =  "6     |___|___|___|___|___|___|___|___|___|___|         |   |   $|   |          |___|___|___|___|___|___|___|___|___|___|";
-string Linha7 =  "7       1   2   3   4   5   6   7   8   9   10          |   | J  |   |           10   9   8   7   6   5   4   3   2   1  ";
+string Linha6 =  "6     |___|___|___|___|___|___|___|___|___|___|         |   |   "+bar.getTopo().getNaipe()+"|   |          |___|___|___|___|___|___|___|___|___|___|";
+string Linha7 =  "7       1   2   3   4   5   6   7   8   9   10          |   | "+bar.getTopo().getCaracter()+"  |   |           10   9   8   7   6   5   4   3   2   1  ";
 string Linha8 =  "8                                                       |   |    |   |                                                   ";
-string Linha9 =  "9      _______________________________________          |   |$___|   |          ________________________________________ ";
+string Linha9 =  "9      _______________________________________          |   |"+bar.getTopo().getNaipe()+"___|   |          ________________________________________ ";
 string Linha10 = "10    |                                       |         |            |         |                                        |";
 string Linha11 = "11    |                Defesa                 |         |__*Espaço*__|         |                 Defesa                 |";
 string Linha12 = "12    |   __________________________________  |                                |   __________________________________   |";
@@ -30,7 +30,7 @@ string Linha21 = "21    |                Ataque                 |         |     
 string Linha22 = "22    |   __________________________________  |         |____________|         |   ___________________________________  |";
 string Linha23 = "23    |  [_J@_|_Q#_|_K$_|_J$_|_J#_|_K&_|_10$] |                                |  [_J@_|_Q#_|_K$_|_J$_|_J#_|_K&_|_10$_] |";
 string Linha24 = "24    |      1    2    3    4    5    6    7  |     ______________________     |    1    2    3    4    5    6    7     |";
-string Linha25 = "25    |_______________________________________|    | MENSAGEM AO USUARIO  |    |________________________________________|";
+string Linha25 = "25    |_______________________________________|    | MENSAGEM AO USUÁRIO  |    |________________________________________|";
 string Linha26 = "26     ____________________________________________|                      |_____________________________________________ ";
 string Linha27 = "27    |                                                                                                                 |";
 string Linha28 = "28     \t\t  "+jog1.getNome()+": Escolha uma carta 'Movimento' ou aperte 'espaço' para colher uma carta do baralho.";
@@ -39,7 +39,7 @@ string Linha30 = "30     ___________________________________                    
 string Linha31 = "31    |             Ataques               |             Campo de Batalha              |             Defesas             |";
 string Linha32 = "32    |                                   |      _______________________________      |                                 |";
 string Linha33 = "33    | Q  = Faca   - Perto     = 2 ou 1  |     |   |   |   |   |   |   |   |   |     | 8 = Armadura- Perto   =-2 ou -1 |";
-string Linha34 = "34    | K  = Espada - Medio     = 2 ou 1  |     | $ |   |   |   |   |   |   | # |     | 7 = Espada  - Medio   =-2 ou -1 |";
+string Linha34 = "34    | K  = Espada - Médio     = 2 ou 1  |     | $ |   |   |   |   |   |   | # |     | 7 = Espada  - Médio   =-2 ou -1 |";
 string Linha35 = "35    | J  = Lança  - Longe     = 2 ou 1  |     |___|___|___|___|___|___|___|___|     | 9 = Escudo  - Longe   =-2 ou -1 |";
 string Linha36 = "36    | 10 = Magia  - Qualquer  = 3 ou 4  |       1   2   3   4   5   6   7   8       | 6 = Desvio  - Qualquer=-3 ou -4 |";
 string Linha37 = "37    |                                   |                                           | *Duas  = 1 ataque proporcional  |";
@@ -124,8 +124,4 @@ int Jogo::getRoundJog1(){
 
 int Jogo::getRoundJog2(){
     return this->rounds_Jog2;
-}
-
-int Jogo::getDistancia(Jogador jog1, Jogador jog2){
-    return (jog2.getPosicao()+1)-(jog1.getPosicao()+1)-1;
 }

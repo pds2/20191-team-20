@@ -20,9 +20,8 @@ void Jogador::setNome(string _nome){
 void Jogador::setNaipe(string _naipe){
     cout << "\n\n\t\t      |   "+_naipe+", agora escolha seu Naipe Especial:\n\t\t      |\n\t\t      |   & <-Espadas\n\t\t      |   # <-Paus\n\t\t      |   $ <-Ouros\n\t\t      |   @ <-Copas\n\t\t      |" << endl;
     cout << "\t\t      |   Digite aqui: ";
-    cin >> naipeEspecial;
+    cin >> this->naipeEspecial;
     system("cls");
-    this->naipeEspecial;
 }
 
 void Jogador::setVida(int _vida){
@@ -96,6 +95,10 @@ int Jogador::getPosicao(){
 
 vector<Carta> Jogador::getCartasEmMao(){
     return this->cartasEmMao;
+}
+
+vector<CartaAtaque> Jogador::getCartasAtaque(){
+    
 }
 
 

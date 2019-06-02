@@ -10,13 +10,14 @@ class Carta{
         string caracter;
         string tipoCarta;
     public:
+        Carta();
         void setNaipe(string _naipe);
         void setCaracter(string _caracter);
         void setTipoCarta(string tipo);
         string getNaipe();
         string getCaracter();
         string getTipoCarta();
-        virtual int executaFuncao(int _distancia);
+        virtual void setValor(int _distancia);
 };
 
 #endif

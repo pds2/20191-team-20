@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "carta.h"
+#include "cartaataque.h"
 
 using namespace std;
 
@@ -25,6 +26,7 @@ class Jogador{
         string* getVida();
         int getPosicao();
         vector<Carta> getCartasEmMao();
+        vector<CartaAtaque> getCartasAtaque();
 
 };
 
