@@ -1,9 +1,12 @@
 #include <iostream>
-#include "headers/jogo.h"
-#include "headers/jogador.h"
-#include "headers/carta.h"
+#include "jogo.cpp"
+#include "jogador.cpp"
+#include "carta.cpp"
+#include "baralho.cpp"
+#include<tchar.h>
 
 int main() {
+    _tsetlocale(LC_ALL, _T("portuguese"));
     Jogador j1,j2;
     Jogo jogo;
     Baralho br;

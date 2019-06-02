@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "headers/cartadefesa.h"
+#include "cartadefesa.h"
 
 using namespace std;
 
-void CartaDefesa::executaFuncao(){
+int CartaDefesa::executaFuncao(int _distancia){
 
 }
 

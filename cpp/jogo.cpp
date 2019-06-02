@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include "headers/jogo.h"
-#include "headers/carta.h"
+#include "jogo.h"
+#include "carta.h"
 
 using namespace std;
 
@@ -30,7 +30,7 @@ string Linha21 = "21    |                Ataque                 |         |     
 string Linha22 = "22    |   __________________________________  |         |____________|         |   ___________________________________  |";
 string Linha23 = "23    |  [_J@_|_Q#_|_K$_|_J$_|_J#_|_K&_|_10$] |                                |  [_J@_|_Q#_|_K$_|_J$_|_J#_|_K&_|_10$_] |";
 string Linha24 = "24    |      1    2    3    4    5    6    7  |     ______________________     |    1    2    3    4    5    6    7     |";
-string Linha25 = "25    |_______________________________________|    | MENSAGEM AO USUÁRIO  |    |________________________________________|";
+string Linha25 = "25    |_______________________________________|    | MENSAGEM AO USUARIO  |    |________________________________________|";
 string Linha26 = "26     ____________________________________________|                      |_____________________________________________ ";
 string Linha27 = "27    |                                                                                                                 |";
 string Linha28 = "28     \t\t  "+jog1.getNome()+": Escolha uma carta 'Movimento' ou aperte 'espaço' para colher uma carta do baralho.";
@@ -39,7 +39,7 @@ string Linha30 = "30     ___________________________________                    
 string Linha31 = "31    |             Ataques               |             Campo de Batalha              |             Defesas             |";
 string Linha32 = "32    |                                   |      _______________________________      |                                 |";
 string Linha33 = "33    | Q  = Faca   - Perto     = 2 ou 1  |     |   |   |   |   |   |   |   |   |     | 8 = Armadura- Perto   =-2 ou -1 |";
-string Linha34 = "34    | K  = Espada - Médio     = 2 ou 1  |     | $ |   |   |   |   |   |   | # |     | 7 = Espada  - Médio   =-2 ou -1 |";
+string Linha34 = "34    | K  = Espada - Medio     = 2 ou 1  |     | $ |   |   |   |   |   |   | # |     | 7 = Espada  - Medio   =-2 ou -1 |";
 string Linha35 = "35    | J  = Lança  - Longe     = 2 ou 1  |     |___|___|___|___|___|___|___|___|     | 9 = Escudo  - Longe   =-2 ou -1 |";
 string Linha36 = "36    | 10 = Magia  - Qualquer  = 3 ou 4  |       1   2   3   4   5   6   7   8       | 6 = Desvio  - Qualquer=-3 ou -4 |";
 string Linha37 = "37    |                                   |                                           | *Duas  = 1 ataque proporcional  |";
@@ -124,4 +124,8 @@ int Jogo::getRoundJog1(){
 
 int Jogo::getRoundJog2(){
     return this->rounds_Jog2;
+}
+
+int Jogo::getDistancia(Jogador jog1, Jogador jog2){
+    return (jog2.getPosicao()+1)-(jog1.getPosicao()+1)-1;
 }

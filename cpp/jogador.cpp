@@ -1,6 +1,6 @@
 #include <iostream>
-#include "headers/jogador.h"
-#include "headers/jogo.h"
+#include "jogador.h"
+#include "jogo.h"
 
 using namespace std;
 
@@ -21,7 +21,7 @@ void Jogador::setNaipe(string _naipe){
     cout << "\n\n\t\t      |   "+_naipe+", agora escolha seu Naipe Especial:\n\t\t      |\n\t\t      |   & <-Espadas\n\t\t      |   # <-Paus\n\t\t      |   $ <-Ouros\n\t\t      |   @ <-Copas\n\t\t      |" << endl;
     cout << "\t\t      |   Digite aqui: ";
     cin >> naipeEspecial;
-    system("clear");
+    system("cls");
     this->naipeEspecial;
 }
 

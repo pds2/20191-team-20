@@ -1,5 +1,5 @@
 #include <iostream>
-#include "headers/baralho.h"
+#include "baralho.h"
 
 using namespace std;
 
@@ -22,16 +22,16 @@ void Baralho::criarBaralho(){
         }
         locBaralho[lin][col] = ordem;
    }*/
-};
+}
 
 void Baralho::embaralhar(){
 
-};
+}
 
 void Baralho::setTipo(string _tipo){
     this->tipo = _tipo;
-};
+}
 
 string Baralho::getTipo(){
     return this->tipo;
-};
+}

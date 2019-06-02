@@ -14,6 +14,7 @@ class Jogo{
         void setRoundJog2(int _round);
         int getRoundJog1();
         int getRoundJog2();
+        int getDistancia(Jogador jog1, Jogador jog2);
 };
 
 #endif

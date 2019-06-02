@@ -2,7 +2,6 @@
 #define HEADER_FILE_BARALHO
 #include "jogador.h"
 #include "carta.h"
-#include "baralho.h"
 #include <vector>
 
 class Baralho{
