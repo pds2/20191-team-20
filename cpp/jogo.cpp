@@ -18,17 +18,14 @@ string Linha9 =  "9      _______________________________________          |   |"
 string Linha10 = "10    |                                       |         |            |         |                                        |";
 string Linha11 = "11    |                Defesa                 |         |__*Espaço*__|         |                 Defesa                 |";
 string Linha12 = "12    |   __________________________________  |                                |   __________________________________   |";
-string Linha13 = "13    |  [_6$_|_5&_|_6$_|_7@_|_9&_|_6$_|_9@_] |                                |  [_8$_|_6&_|_7$_|_8@_|_9&_|_6$_|_9@_]  |";
 string Linha14 = "14    |    1    2    3    4    5    6     7   |          ____________          |    1    2    3    4    5    6    7     |";
 string Linha15 = "15    |                                       |         |    MESA    |         |                                        |";
 string Linha16 = "16    |               Movimento               |         |    ____    |         |                Movimento               |";
 string Linha17 = "17    |   __________________________________  |         |   |   #|   |         |   __________________________________   |";
-string Linha18 = "18    |  [_4#_|_5#_|_2$_|_3@_|_3&_|_A$_|_4$_] |         |   | K  |   |         |  [_4#_|_5#_|_2$_|_3@_|_3&_|_A$_|_4$_]  |";
 string Linha19 = "19    |     1    2    3    4    5    6    7   |         |   |    |   |         |    1    2    3    4    5    6    7     |";
 string Linha20 = "20    |                                       |         |   |#___|   |         |                                        |";
 string Linha21 = "21    |                Ataque                 |         |            |         |                 Ataque                 |";
 string Linha22 = "22    |   __________________________________  |         |____________|         |   ___________________________________  |";
-string Linha23 = "23    |  [_J@_|_Q#_|_K$_|_J$_|_J#_|_K&_|_10$] |                                |  [_J@_|_Q#_|_K$_|_J$_|_J#_|_K&_|_10$_] |";
 string Linha24 = "24    |      1    2    3    4    5    6    7  |     ______________________     |    1    2    3    4    5    6    7     |";
 string Linha25 = "25    |_______________________________________|    | MENSAGEM AO USUÁRIO  |    |________________________________________|";
 string Linha26 = "26     ____________________________________________|                      |_____________________________________________ ";
@@ -62,17 +59,17 @@ cout << Linha9 << endl;
 cout << Linha10 << endl;
 cout << Linha11 << endl;
 cout << Linha12 << endl;
-cout << Linha13 << endl;
+printCartasDefesa(jog1,jog2);
 cout << Linha14 << endl;
 cout << Linha15 << endl;
 cout << Linha16 << endl;
 cout << Linha17 << endl;
-cout << Linha18 << endl;
+printCartasMovimento(jog1,jog2,monte);
 cout << Linha19 << endl;
 cout << Linha20 << endl;
 cout << Linha21 << endl;
 cout << Linha22 << endl;
-cout << Linha23 << endl;
+printCartasAtaque(jog1,jog2);
 cout << Linha24 << endl;
 cout << Linha25 << endl;
 cout << Linha26 << endl;
@@ -108,6 +105,123 @@ void Jogo::printVida(Jogador jog1, Jogador jog2){
     " | " +jog2.getVida()[5]+ " | " +jog2.getVida()[4]+ " | " +jog2.getVida()[3]+ " | " +jog2.getVida()[2]+
     " | " +jog2.getVida()[1]+ " | " +jog2.getVida()[0]+ " |";
     cout<< Linha5<<endl;
+}
+
+void Jogo::printCartasDefesa(Jogador jog1, Jogador jog2){
+    string Linha13;
+    if(jog1.getCartasDefesa().size() == 0 && jog2.getCartasDefesa().size() == 0){
+         Linha13 = "13    |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_] |                                |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_]  |";
+    }else if(jog1.getCartasDefesa().size() != 0 && jog2.getCartasDefesa().size() != 0){
+        string vetor[7],vetor2[7];
+        for(int k=0;k<7;k++){
+            vetor[k] = "NN";
+            vetor2[k] = "NN"; 
+        }
+        for(int i=0;i<jog2.getCartasDefesa().size();i++){
+            vetor[i] = (jog2.getCartasDefesa()[i].getCaracter()+jog2.getCartasDefesa()[i].getNaipe());
+        }
+        for(int j=0;j<jog1.getCartasDefesa().size();j++){
+            vetor2[j] = (jog1.getCartasDefesa()[j].getCaracter()+jog1.getCartasDefesa()[j].getNaipe());
+        }
+        Linha13 = "13    |  [_"+vetor2[0]+"_|_"+vetor2[1]+"_|_"+vetor2[2]+"_|_"+vetor2[3]+"_|_"+vetor2[4]+"_|_"+vetor2[5]+"_|_"+vetor2[6]+"_] |                                |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_]  |";
+    }else if(jog2.getCartasDefesa().size() != 0){
+        string vetor[7];
+        for(int k=0;k<7;k++){
+            vetor[k] = "NN"; 
+        }
+        for(int i=0;i<jog2.getCartasDefesa().size();i++){
+            vetor[i] = (jog2.getCartasDefesa()[i].getCaracter()+jog2.getCartasDefesa()[i].getNaipe());
+        }
+        Linha13 = "13    |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_] |                                |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_]  |";
+    }else{
+        string vetor[7];
+        for(int k=0;k<7;k++){
+            vetor[k] = "NN"; 
+        }
+        for(int i=0;i<jog1.getCartasDefesa().size();i++){
+            vetor[i] = (jog1.getCartasDefesa()[i].getCaracter()+jog1.getCartasDefesa()[i].getNaipe());
+        }
+        Linha13 = "13    |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_] |                                |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_]  |";
+    }
+    cout<<Linha13<<endl;
+}
+
+void Jogo::printCartasAtaque(Jogador jog1, Jogador jog2){
+    string Linha23;
+    if(jog1.getCartasAtaque().size() == 0 && jog2.getCartasAtaque().size() == 0){
+         Linha23 = "23    |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_] |                               |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_]  |";
+    }else if(jog1.getCartasAtaque().size() != 0 && jog2.getCartasAtaque().size() != 0){
+        string vetor[7],vetor2[7];
+        for(int k=0;k<7;k++){
+            vetor[k] = "NN";
+            vetor2[k] = "NN"; 
+        }
+        for(int i=0;i<jog2.getCartasAtaque().size();i++){
+            vetor[i] = (jog2.getCartasAtaque()[i].getCaracter()+jog2.getCartasAtaque()[i].getNaipe());
+        }
+        for(int j=0;j<jog1.getCartasAtaque().size();j++){
+            vetor2[j] = (jog1.getCartasAtaque()[j].getCaracter()+jog1.getCartasAtaque()[j].getNaipe());
+        }
+        Linha23 = "23    |  [_"+vetor2[0]+"_|_"+vetor2[1]+"_|_"+vetor2[2]+"_|_"+vetor2[3]+"_|_"+vetor2[4]+"_|_"+vetor2[5]+"_|_"+vetor2[6]+"_]|                               |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_]  |";
+    }else if(jog2.getCartasAtaque().size() != 0){
+        string vetor[7];
+        for(int k=0;k<7;k++){
+            vetor[k] = "NN"; 
+        }
+        for(int i=0;i<jog2.getCartasAtaque().size();i++){
+            vetor[i] = (jog2.getCartasAtaque()[i].getCaracter()+jog2.getCartasAtaque()[i].getNaipe());
+        }
+        Linha23 = "23    |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_] |                               |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_]  |";
+    }else{
+        string vetor[7];
+        for(int k=0;k<7;k++){
+            vetor[k] = "NN"; 
+        }
+        for(int i=0;i<jog1.getCartasAtaque().size();i++){
+            vetor[i] = (jog1.getCartasAtaque()[i].getCaracter()+jog1.getCartasAtaque()[i].getNaipe());
+        }
+        Linha23 = "23    |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_]|                               |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_]  |";
+    }
+    cout<<Linha23<<endl;
+}
+
+void Jogo::printCartasMovimento(Jogador jog1, Jogador jog2, Carta monte[]){
+    string Linha18;
+    if(jog1.getCartasMovimento().size() == 0 && jog2.getCartasMovimento().size() == 0){
+         Linha18 = "18    |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_] |         |   | K  |   |         |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_]  |";
+    }else if(jog1.getCartasMovimento().size() != 0 && jog2.getCartasMovimento().size() != 0){
+        string vetor[7],vetor2[7];
+        for(int k=0;k<7;k++){
+            vetor[k] = "NN";
+            vetor2[k] = "NN"; 
+        }
+        for(int i=0;i<jog2.getCartasMovimento().size();i++){
+            vetor[i] = (jog2.getCartasMovimento()[i].getCaracter()+jog2.getCartasMovimento()[i].getNaipe());
+        }
+        for(int j=0;j<jog1.getCartasMovimento().size();j++){
+            vetor2[j] = (jog1.getCartasMovimento()[j].getCaracter()+jog1.getCartasMovimento()[j].getNaipe());
+        }
+        Linha18 = "18    |  [_"+vetor2[0]+"_|_"+vetor2[1]+"_|_"+vetor2[2]+"_|_"+vetor2[3]+"_|_"+vetor2[4]+"_|_"+vetor2[5]+"_|_"+vetor2[6]+"_] |         |   | K  |   |         |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_]  |";
+    }else if(jog2.getCartasMovimento().size() != 0){
+        string vetor[7];
+        for(int k=0;k<7;k++){
+            vetor[k] = "NN"; 
+        }
+        for(int i=0;i<jog2.getCartasMovimento().size();i++){
+            vetor[i] = (jog2.getCartasMovimento()[i].getCaracter()+jog2.getCartasMovimento()[i].getNaipe());
+        }
+        Linha18 = "18    |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_] |         |   | K  |   |         |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_]  |";
+    }else{
+        string vetor[7];
+        for(int k=0;k<7;k++){
+            vetor[k] = "NN"; 
+        }
+        for(int i=0;i<jog1.getCartasMovimento().size();i++){
+            vetor[i] = (jog1.getCartasMovimento()[i].getCaracter()+jog1.getCartasMovimento()[i].getNaipe());
+        }
+        Linha18 = "18    |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_] |         |   | K  |   |         |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_]  |";
+    }
+    cout<<Linha18<<endl;
 }
 
 void Jogo::setRoundJog1(int _round){

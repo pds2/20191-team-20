@@ -4,6 +4,8 @@
 #include <vector>
 #include "carta.h"
 #include "cartaataque.h"
+#include "cartadefesa.h"
+#include "cartamovimento.h"
 
 using namespace std;
 
@@ -27,7 +29,8 @@ class Jogador{
         int getPosicao();
         vector<Carta> getCartasEmMao();
         vector<CartaAtaque> getCartasAtaque();
-
+        vector<CartaDefesa> getCartasDefesa();
+        vector<CartaMovimento> getCartasMovimento();
 };
 
 #endif

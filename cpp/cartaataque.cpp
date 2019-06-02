@@ -28,7 +28,7 @@ void CartaAtaque::setValor(int _distancia){
                 this->qntDano = 1;
             }
         break;
-        case '10':
+        case ('1'+'0'):
             this->qntDano = 3;
         break;
     }

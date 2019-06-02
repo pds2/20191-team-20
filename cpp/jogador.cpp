@@ -14,7 +14,6 @@ void Jogador::setNome(string _nome){
     cout << "                      ##         ## ##    ## ##  @    @@   ##  $$  ||  /)  @   @   ##    "<< endl;
     cout << "                      ########  ##   ##   ##  ##  @@@@  @  ##  $$  ||//)    @@@ @  ##    "<< endl;
     cout << "\n\n\n\n\n\t\t      |   "+_nome+"º Jogador, digite aqui seu nome (até 8 letras): ";
-    getline(cin,nome);
 }
 
 void Jogador::setNaipe(string _naipe){
@@ -42,7 +41,6 @@ void Jogador::adicionaCartaEmMao(vector<Carta> _cartas){
         for(int i=0;i<_cartas.size();i++){
             cartasEmMao.push_back(_cartas[i]);
         }
-        cout<<"Cartas adicionadas !";
     }else{
         cout<<" Não é possível adicionar nenhuma carta !";
     }
@@ -98,7 +96,49 @@ vector<Carta> Jogador::getCartasEmMao(){
 }
 
 vector<CartaAtaque> Jogador::getCartasAtaque(){
-    
+    vector<CartaAtaque> ataque;
+    for(int i=0;i<cartasEmMao.size();i++){
+        if(cartasEmMao[i].getCaracter() == "Q" || cartasEmMao[i].getCaracter() == "K"
+        || cartasEmMao[i].getCaracter() == "J" || cartasEmMao[i].getCaracter() == "10"){
+            CartaAtaque atual;
+            atual.setCaracter(cartasEmMao[i].getCaracter());
+            atual.setNaipe(cartasEmMao[i].getNaipe());
+            ataque.push_back(atual);
+        }
+    }
+
+    return ataque;
+}
+
+vector<CartaDefesa> Jogador::getCartasDefesa(){
+    vector<CartaDefesa> defesa;
+    for(int i=0;i<cartasEmMao.size();i++){
+        if(cartasEmMao[i].getCaracter() == "8" || cartasEmMao[i].getCaracter() == "7"
+        || cartasEmMao[i].getCaracter() == "9" || cartasEmMao[i].getCaracter() == "6"){
+            CartaDefesa atual;
+            atual.setCaracter(cartasEmMao[i].getCaracter());
+            atual.setNaipe(cartasEmMao[i].getNaipe());
+            defesa.push_back(atual);
+        }
+    }
+
+    return defesa;
+}
+
+vector<CartaMovimento> Jogador::getCartasMovimento(){
+    vector<CartaMovimento> movimento;
+    for(int i=0;i<cartasEmMao.size();i++){
+        if(cartasEmMao[i].getCaracter() == "A" || cartasEmMao[i].getCaracter() == "2"
+        || cartasEmMao[i].getCaracter() == "3" || cartasEmMao[i].getCaracter() == "4"
+        || cartasEmMao[i].getCaracter() == "5"){
+            CartaMovimento atual;
+            atual.setCaracter(cartasEmMao[i].getCaracter());
+            atual.setNaipe(cartasEmMao[i].getNaipe());
+            movimento.push_back(atual);
+        }
+    }
+
+    return movimento;
 }
 
 
