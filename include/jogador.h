@@ -17,8 +17,8 @@ class Jogador{
         int posicaoVetor;
         vector<Carta> cartasEmMao;
     public:
-        void setNome(string _nome);
-        void setNaipe(string _naipe);
+        void setNome(int num_jogador);
+        void setNaipe();
         void setVida(int _vida);
         void setPosicao(int _posicao);
         void adicionaCartaEmMao(vector<Carta> _cartas);

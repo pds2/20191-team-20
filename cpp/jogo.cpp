@@ -3,9 +3,10 @@
 #include "jogo.h"
 #include "carta.h"
 
+
 using namespace std;
 
-void Jogo::atualizaTela(Jogador jog1, Jogador jog2, Baralho bar, Carta monte[]){
+void Jogo::atualizaTela(Jogador jog1, Jogador jog2, Baralho bar, string tipoCarta, bool defesa){
 
 string Linha1 =  "1\t\t\t\t\t   ___                                   ___";
 string Linha2 =  "2      "+jog1.getNome()+"\t\t\t   Rounds |_"+to_string(this->getRoundJog1())+"_|            esKalibur            |_"+to_string(this->getRoundJog2())+"_| Rounds\t\t\t"+jog2.getNome()+"";
@@ -16,27 +17,27 @@ string Linha7 =  "7       1   2   3   4   5   6   7   8   9   10          |   | 
 string Linha8 =  "8                                                       |   |    |   |                                                   ";
 string Linha9 =  "9      _______________________________________          |   |"+bar.getTopo().getNaipe()+"___|   |          ________________________________________ ";
 string Linha10 = "10    |                                       |         |            |         |                                        |";
-string Linha11 = "11    |                Defesa                 |         |__*Espaço*__|         |                 Defesa                 |";
+string Linha11 = "11    |                Defesa                 |         |__*Espaco*__|         |                 Defesa                 |";
 string Linha12 = "12    |   __________________________________  |                                |   __________________________________   |";
 string Linha14 = "14    |    1    2    3    4    5    6     7   |          ____________          |    1    2    3    4    5    6    7     |";
 string Linha15 = "15    |                                       |         |    MESA    |         |                                        |";
 string Linha16 = "16    |               Movimento               |         |    ____    |         |                Movimento               |";
-string Linha17 = "17    |   __________________________________  |         |   |   #|   |         |   __________________________________   |";
+string Linha17 = "17    |   __________________________________  |         |   |   "+monte.top().getNaipe()+"|   |         |   __________________________________   |";
 string Linha19 = "19    |     1    2    3    4    5    6    7   |         |   |    |   |         |    1    2    3    4    5    6    7     |";
-string Linha20 = "20    |                                       |         |   |#___|   |         |                                        |";
+string Linha20 = "20    |                                       |         |   |"+monte.top().getNaipe()+"___|   |         |                                        |";
 string Linha21 = "21    |                Ataque                 |         |            |         |                 Ataque                 |";
 string Linha22 = "22    |   __________________________________  |         |____________|         |   ___________________________________  |";
 string Linha24 = "24    |      1    2    3    4    5    6    7  |     ______________________     |    1    2    3    4    5    6    7     |";
-string Linha25 = "25    |_______________________________________|    | MENSAGEM AO USUÁRIO  |    |________________________________________|";
+string Linha25 = "25    |_______________________________________|    | MENSAGEM AO USUARIO  |    |________________________________________|";
 string Linha26 = "26     ____________________________________________|                      |_____________________________________________ ";
 string Linha27 = "27    |                                                                                                                 |";
-string Linha28 = "28     \t\t  "+jog1.getNome()+": Escolha uma carta 'Movimento' ou aperte 'espaço' para colher uma carta do baralho.";
+//string Linha28 = "28     \t\t  "+jog1.getNome()+": Escolha uma carta 'Movimento' ou aperte 'espaço' para colher uma carta do baralho.";
 string Linha29 = "29    |_________________________________________________________________________________________________________________|";
 string Linha30 = "30     ___________________________________                                             _________________________________ ";
 string Linha31 = "31    |             Ataques               |             Campo de Batalha              |             Defesas             |";
 string Linha32 = "32    |                                   |      _______________________________      |                                 |";
 string Linha33 = "33    | Q  = Faca   - Perto     = 2 ou 1  |     |   |   |   |   |   |   |   |   |     | 8 = Armadura- Perto   =-2 ou -1 |";
-string Linha34 = "34    | K  = Espada - Médio     = 2 ou 1  |     | $ |   |   |   |   |   |   | # |     | 7 = Espada  - Médio   =-2 ou -1 |";
+//string Linha34 = "34    | K  = Espada - Medio     = 2 ou 1  |     | $ |   |   |   |   |   |   | # |     | 7 = Espada  - Medio   =-2 ou -1 |";
 string Linha35 = "35    | J  = Lança  - Longe     = 2 ou 1  |     |___|___|___|___|___|___|___|___|     | 9 = Escudo  - Longe   =-2 ou -1 |";
 string Linha36 = "36    | 10 = Magia  - Qualquer  = 3 ou 4  |       1   2   3   4   5   6   7   8       | 6 = Desvio  - Qualquer=-3 ou -4 |";
 string Linha37 = "37    |                                   |                                           | *Duas  = 1 ataque proporcional  |";
@@ -64,7 +65,7 @@ cout << Linha14 << endl;
 cout << Linha15 << endl;
 cout << Linha16 << endl;
 cout << Linha17 << endl;
-printCartasMovimento(jog1,jog2,monte);
+printCartasMovimento(jog1,jog2);
 cout << Linha19 << endl;
 cout << Linha20 << endl;
 cout << Linha21 << endl;
@@ -74,13 +75,13 @@ cout << Linha24 << endl;
 cout << Linha25 << endl;
 cout << Linha26 << endl;
 cout << Linha27 << endl;
-cout << Linha28 << endl;
+printMensagem(jog1,tipoCarta, defesa);
 cout << Linha29 << endl;
 cout << Linha30 << endl;
 cout << Linha31 << endl;
 cout << Linha32 << endl;
 cout << Linha33 << endl;
-cout << Linha34 << endl;
+printPosicao(jog1,jog2);
 cout << Linha35 << endl;
 cout << Linha36 << endl;
 cout << Linha37 << endl;
@@ -92,6 +93,20 @@ cout << Linha42 << endl;
 
 }
 
+
+void Jogo::adicionaMonte(Carta _carta){
+    monte.push(_carta);
+}
+
+void Jogo::printMensagem(Jogador jog, string tipoCarta, bool defesa){
+    string Linha28;
+    if(defesa){
+        Linha28 = "28     \t\t  "+jog.getNome()+": Escolha uma carta '"+tipoCarta+"' ou aperte 'espaço' para receber o dano do ataque.";
+    }else{
+        Linha28 = "28     \t\t  "+jog.getNome()+": Escolha uma carta '"+tipoCarta+"' ou aperte 'espaço' para colher uma carta do baralho.";
+    }
+    cout<< Linha28 << endl;
+}
 void Jogo::passaVez(Jogador jog){
 
 }
@@ -185,10 +200,10 @@ void Jogo::printCartasAtaque(Jogador jog1, Jogador jog2){
     cout<<Linha23<<endl;
 }
 
-void Jogo::printCartasMovimento(Jogador jog1, Jogador jog2, Carta monte[]){
+void Jogo::printCartasMovimento(Jogador jog1, Jogador jog2){
     string Linha18;
     if(jog1.getCartasMovimento().size() == 0 && jog2.getCartasMovimento().size() == 0){
-         Linha18 = "18    |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_] |         |   | K  |   |         |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_]  |";
+        Linha18 = "18    |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_] |         |   | "+monte.top().getCaracter()+"  |   |         |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_]  |";
     }else if(jog1.getCartasMovimento().size() != 0 && jog2.getCartasMovimento().size() != 0){
         string vetor[7],vetor2[7];
         for(int k=0;k<7;k++){
@@ -201,7 +216,7 @@ void Jogo::printCartasMovimento(Jogador jog1, Jogador jog2, Carta monte[]){
         for(int j=0;j<jog1.getCartasMovimento().size();j++){
             vetor2[j] = (jog1.getCartasMovimento()[j].getCaracter()+jog1.getCartasMovimento()[j].getNaipe());
         }
-        Linha18 = "18    |  [_"+vetor2[0]+"_|_"+vetor2[1]+"_|_"+vetor2[2]+"_|_"+vetor2[3]+"_|_"+vetor2[4]+"_|_"+vetor2[5]+"_|_"+vetor2[6]+"_] |         |   | K  |   |         |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_]  |";
+        Linha18 = "18    |  [_"+vetor2[0]+"_|_"+vetor2[1]+"_|_"+vetor2[2]+"_|_"+vetor2[3]+"_|_"+vetor2[4]+"_|_"+vetor2[5]+"_|_"+vetor2[6]+"_] |         |   | "+monte.top().getCaracter()+"  |   |         |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_]  |";
     }else if(jog2.getCartasMovimento().size() != 0){
         string vetor[7];
         for(int k=0;k<7;k++){
@@ -210,7 +225,7 @@ void Jogo::printCartasMovimento(Jogador jog1, Jogador jog2, Carta monte[]){
         for(int i=0;i<jog2.getCartasMovimento().size();i++){
             vetor[i] = (jog2.getCartasMovimento()[i].getCaracter()+jog2.getCartasMovimento()[i].getNaipe());
         }
-        Linha18 = "18    |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_] |         |   | K  |   |         |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_]  |";
+        Linha18 = "18    |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_] |         |   | "+monte.top().getCaracter()+"  |   |         |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_]  |";
     }else{
         string vetor[7];
         for(int k=0;k<7;k++){
@@ -219,7 +234,7 @@ void Jogo::printCartasMovimento(Jogador jog1, Jogador jog2, Carta monte[]){
         for(int i=0;i<jog1.getCartasMovimento().size();i++){
             vetor[i] = (jog1.getCartasMovimento()[i].getCaracter()+jog1.getCartasMovimento()[i].getNaipe());
         }
-        Linha18 = "18    |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_] |         |   | K  |   |         |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_]  |";
+        Linha18 = "18    |  [_"+vetor[0]+"_|_"+vetor[1]+"_|_"+vetor[2]+"_|_"+vetor[3]+"_|_"+vetor[4]+"_|_"+vetor[5]+"_|_"+vetor[6]+"_] |         |   | "+monte.top().getCaracter()+"  |   |         |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_]  |";
     }
     cout<<Linha18<<endl;
 }
@@ -238,4 +253,34 @@ int Jogo::getRoundJog1(){
 
 int Jogo::getRoundJog2(){
     return this->rounds_Jog2;
+}
+
+stack<Carta> Jogo::getMonte(){
+    return this->monte;
+}
+
+void Jogo::printTelaInicial(){
+    cout << "\n\n\n\n";
+    cout << "                      ########            ##   ##          ##      ||                    "<< endl;
+    cout << "                      ##        ##   ##   ##  ##           ##  @@  ||                    "<< endl;
+    cout << "                      ######     ## ##    ## ##   @@@@     ##      ||||)   @   @    #### "<< endl;
+    cout << "                      ##          ###     ####   @    @    ##  $$  ||  |)  @   @   ##    "<< endl;
+    cout << "                      ##         ## ##    ## ##  @    @@   ##  $$  ||  /)  @   @   ##    "<< endl;
+    cout << "                      ########  ##   ##   ##  ##  @@@@  @  ##  $$  ||//)    @@@ @  ##    "<< endl;
+}
+
+void Jogo::printPosicao(Jogador jog1, Jogador jog2){
+    string vetorPosicoes[8];
+    for(int i=0;i<8;i++){
+        if(i != (jog1.getPosicao()-1) && i != (jog2.getPosicao()-1)){
+            vetorPosicoes[i] = " ";
+        }else if( i == (jog1.getPosicao()-1)){
+            vetorPosicoes[i] = jog1.getNaipeEsp();
+        }else{
+            vetorPosicoes[i] = jog2.getNaipeEsp();
+        }
+    }
+    
+    string Linha34 = "34    | K  = Espada - Medio     = 2 ou 1  |     | "+vetorPosicoes[0]+" | "+vetorPosicoes[1]+" | "+vetorPosicoes[2]+" | "+vetorPosicoes[3]+" | "+vetorPosicoes[4]+" | "+vetorPosicoes[5]+" | "+vetorPosicoes[6]+" | "+vetorPosicoes[7]+" |     | 7 = Espada  - Medio   =-2 ou -1 |";
+    cout<< Linha34 <<endl;
 }

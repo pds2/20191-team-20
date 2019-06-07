@@ -5,19 +5,13 @@
 
 using namespace std;
 
-void Jogador::setNome(string _nome){
-    cout << "\n\n\n\n";
-    cout << "                      ########            ##   ##          ##      ||                    "<< endl;
-    cout << "                      ##        ##   ##   ##  ##           ##  @@  ||                    "<< endl;
-    cout << "                      ######     ## ##    ## ##   @@@@     ##      ||||)   @   @    #### "<< endl;
-    cout << "                      ##          ###     ####   @    @    ##  $$  ||  |)  @   @   ##    "<< endl;
-    cout << "                      ##         ## ##    ## ##  @    @@   ##  $$  ||  /)  @   @   ##    "<< endl;
-    cout << "                      ########  ##   ##   ##  ##  @@@@  @  ##  $$  ||//)    @@@ @  ##    "<< endl;
-    cout << "\n\n\n\n\n\t\t      |   "+_nome+"º Jogador, digite aqui seu nome (até 8 letras): ";
+void Jogador::setNome(int num_jogador){
+    cout << "\n\n\n\n\n\t\t      |   "+to_string(num_jogador)+"º Jogador, digite aqui seu nome (até 8 letras): ";
+    cin>>this->nome;
 }
 
-void Jogador::setNaipe(string _naipe){
-    cout << "\n\n\t\t      |   "+_naipe+", agora escolha seu Naipe Especial:\n\t\t      |\n\t\t      |   & <-Espadas\n\t\t      |   # <-Paus\n\t\t      |   $ <-Ouros\n\t\t      |   @ <-Copas\n\t\t      |" << endl;
+void Jogador::setNaipe(){
+    cout << "\n\n\t\t      |   "+this->getNome()+", agora escolha seu Naipe Especial:\n\t\t      |\n\t\t      |   & <-Espadas\n\t\t      |   # <-Paus\n\t\t      |   $ <-Ouros\n\t\t      |   @ <-Copas\n\t\t      |" << endl;
     cout << "\t\t      |   Digite aqui: ";
     cin >> this->naipeEspecial;
     system("cls");
