@@ -10,7 +10,6 @@ class Carta{
         string caracter;
         string tipoCarta;
     public:
-        Carta();
         void setNaipe(string _naipe);
         void setCaracter(string _caracter);
         void setTipoCarta(string tipo);

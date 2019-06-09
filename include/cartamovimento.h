@@ -9,6 +9,7 @@ class CartaMovimento : public Carta{
     private:
         int qntMovimento;
     public:
+        CartaMovimento(string caracter, string naipe);
         void setValor(int _distancia) override;
         int getMovimento();
 };

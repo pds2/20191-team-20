@@ -10,6 +10,7 @@ class CartaAtaque : public Carta{
         int qntDano;
         int tipoAtaque;
     public:
+        CartaAtaque(string simbolo, string naipe);
         void setValor(int _distancia) override;
         int getDano();
 };

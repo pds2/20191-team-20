@@ -1,6 +1,20 @@
 {
     "files.associations": {
         "xstring": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "utility": "cpp",
+        "vector": "cpp",
+        "map": "cpp",
+        "string": "cpp",
+        "ostream": "cpp",
+        "iosfwd": "cpp",
+        "xtree": "cpp",
+        "xutility": "cpp",
+        "set": "cpp",
+        "deque": "cpp",
+        "istream": "cpp",
+        "memory": "cpp",
+        "type_traits": "cpp",
+        "xlocnum": "cpp"
     }
 }

@@ -46,6 +46,10 @@ void Baralho::embaralhar(){
     
 }
 
+void Baralho::setCartas(vector<Carta> _cartas){
+    this->cartas = _cartas;
+}
+
 void Baralho::setTipo(string _tipo){
     this->tipo = _tipo;
 };

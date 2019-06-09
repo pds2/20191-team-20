@@ -27,7 +27,13 @@ void Jogador::setVida(int _vida){
 }
 
 void Jogador::setPosicao(int _posicao){
-    this->posicaoVetor = _posicao;
+    if(_posicao >= 0 && _posicao <= 8){
+        this->posicaoVetor = _posicao;
+    }else if(_posicao > 8){
+        this->posicaoVetor = 8;
+    }else if(_posicao < 0){
+        this->posicaoVetor = 0;
+    }
 }
 
 void Jogador::adicionaCartaEmMao(vector<Carta> _cartas){
@@ -62,7 +68,6 @@ void Jogador::removeCartaEmMao(vector<Carta> _cartas){
                 }
             }
         }
-        cout<<" Carta(s) removida(s) com sucesso !";
     }else{
         cout<<"Não é possível remover nenhuma carta ou o jogador não possui nenhuma carta em mãos ! ";
     }
@@ -81,6 +86,18 @@ string Jogador::getNaipeEsp(){
     return this->qntVidas;
 }
 
+int Jogador::getQntVidas(){
+    int cont = 0;
+    for(int i=0;i<10;i++){
+        if(qntVidas[i] != "X"){
+            break;
+        }
+        cont++;
+    }
+
+    return cont;
+}
+
 int Jogador::getPosicao(){
     return this->posicaoVetor;
 }
@@ -94,9 +111,7 @@ vector<CartaAtaque> Jogador::getCartasAtaque(){
     for(int i=0;i<cartasEmMao.size();i++){
         if(cartasEmMao[i].getCaracter() == "Q" || cartasEmMao[i].getCaracter() == "K"
         || cartasEmMao[i].getCaracter() == "J" || cartasEmMao[i].getCaracter() == "10"){
-            CartaAtaque atual;
-            atual.setCaracter(cartasEmMao[i].getCaracter());
-            atual.setNaipe(cartasEmMao[i].getNaipe());
+            CartaAtaque atual = CartaAtaque(cartasEmMao[i].getCaracter(),cartasEmMao[i].getNaipe());
             ataque.push_back(atual);
         }
     }
@@ -109,9 +124,7 @@ vector<CartaDefesa> Jogador::getCartasDefesa(){
     for(int i=0;i<cartasEmMao.size();i++){
         if(cartasEmMao[i].getCaracter() == "8" || cartasEmMao[i].getCaracter() == "7"
         || cartasEmMao[i].getCaracter() == "9" || cartasEmMao[i].getCaracter() == "6"){
-            CartaDefesa atual;
-            atual.setCaracter(cartasEmMao[i].getCaracter());
-            atual.setNaipe(cartasEmMao[i].getNaipe());
+            CartaDefesa atual = CartaDefesa(cartasEmMao[i].getCaracter(),cartasEmMao[i].getNaipe());
             defesa.push_back(atual);
         }
     }
@@ -125,9 +138,7 @@ vector<CartaMovimento> Jogador::getCartasMovimento(){
         if(cartasEmMao[i].getCaracter() == "A" || cartasEmMao[i].getCaracter() == "2"
         || cartasEmMao[i].getCaracter() == "3" || cartasEmMao[i].getCaracter() == "4"
         || cartasEmMao[i].getCaracter() == "5"){
-            CartaMovimento atual;
-            atual.setCaracter(cartasEmMao[i].getCaracter());
-            atual.setNaipe(cartasEmMao[i].getNaipe());
+            CartaMovimento atual = CartaMovimento(cartasEmMao[i].getCaracter(),cartasEmMao[i].getNaipe());
             movimento.push_back(atual);
         }
     }

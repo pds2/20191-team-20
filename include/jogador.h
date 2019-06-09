@@ -26,6 +26,7 @@ class Jogador{
         string getNome();
         string getNaipeEsp();
         string* getVida();
+        int getQntVidas();
         int getPosicao();
         vector<Carta> getCartasEmMao();
         vector<CartaAtaque> getCartasAtaque();

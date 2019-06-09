@@ -47,3 +47,8 @@ void CartaMovimento::setValor(int _distancia){
 int CartaMovimento::getMovimento(){
     return this->qntMovimento;
 }
+
+CartaMovimento::CartaMovimento(string caracter, string naipe){
+    this->setNaipe(naipe);
+    this->setCaracter(caracter);
+}

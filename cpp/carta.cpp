@@ -31,6 +31,3 @@ void Carta::setValor(int _distancia){
 
 }
 
-Carta::Carta(){
-    
-}

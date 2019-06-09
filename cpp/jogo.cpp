@@ -2,11 +2,12 @@
 #include <string>
 #include "jogo.h"
 #include "carta.h"
+#include <map>
 
 
 using namespace std;
 
-void Jogo::atualizaTela(Jogador jog1, Jogador jog2, Baralho bar, string tipoCarta, bool defesa){
+void Jogo::atualizaTela(Jogador &jog1, Jogador &jog2, Baralho bar, string tipoCarta, bool defesa, bool mensagem_customizada, string mensagem, bool jog){
 
 string Linha1 =  "1\t\t\t\t\t   ___                                   ___";
 string Linha2 =  "2      "+jog1.getNome()+"\t\t\t   Rounds |_"+to_string(this->getRoundJog1())+"_|            esKalibur            |_"+to_string(this->getRoundJog2())+"_| Rounds\t\t\t"+jog2.getNome()+"";
@@ -75,7 +76,15 @@ cout << Linha24 << endl;
 cout << Linha25 << endl;
 cout << Linha26 << endl;
 cout << Linha27 << endl;
-printMensagem(jog1,tipoCarta, defesa);
+if(mensagem_customizada){
+    printMensagem(mensagem);
+}else{
+    if(jog){
+        printMensagem(jog1,tipoCarta, defesa);
+    }else{
+        printMensagem(jog2,tipoCarta, defesa);
+    }
+}
 cout << Linha29 << endl;
 cout << Linha30 << endl;
 cout << Linha31 << endl;
@@ -101,14 +110,48 @@ void Jogo::adicionaMonte(Carta _carta){
 void Jogo::printMensagem(Jogador jog, string tipoCarta, bool defesa){
     string Linha28;
     if(defesa){
-        Linha28 = "28     \t\t  "+jog.getNome()+": Escolha uma carta '"+tipoCarta+"' ou aperte 'espaço' para receber o dano do ataque.";
+        Linha28 = "28  \t  "+jog.getNome()+": Escolha uma carta '"+tipoCarta+"'(seu respectivo numero) ou aperte 'espaco' para receber o dano do ataque.";
     }else{
-        Linha28 = "28     \t\t  "+jog.getNome()+": Escolha uma carta '"+tipoCarta+"' ou aperte 'espaço' para colher uma carta do baralho.";
+        Linha28 = "28  \t  "+jog.getNome()+": Escolha uma carta '"+tipoCarta+"'(seu respectivo numero) ou aperte 'espaco' para colher uma carta do baralho.";
     }
     cout<< Linha28 << endl;
 }
+
+void Jogo::printMensagem(string mensagem){
+    cout<<"28"<<"                                                   "<< mensagem <<endl;
+}
 void Jogo::passaVez(Jogador jog){
 
+}
+
+void Jogo::distribuiCartas(Jogador &j1, Jogador &j2, Baralho &br){
+
+    vector<Carta> adicionar;
+    vector<Carta> adicionar2;
+    for(int i=0;i<9;i++){
+        adicionar.push_back(br.getTopo());
+        br.desempilha();
+    }
+    
+    for(int i=0;i<9;i++){
+        adicionar2.push_back(br.getTopo());
+        br.desempilha();
+    }
+
+    j1.adicionaCartaEmMao(adicionar);
+    j2.adicionaCartaEmMao(adicionar2);
+
+}
+
+Baralho Jogo::misturaBaralhos(Baralho b1, Baralho b2){
+    vector<Carta> novo;
+    for(int i=0;i<52;i++){
+        novo.push_back(b1.getBaralho()[i]);
+        novo.push_back(b2.getBaralho()[(52-i-1)]);
+    }
+    Baralho b;
+    b.setCartas(novo);
+    return b;
 }
 
 void Jogo::printVida(Jogador jog1, Jogador jog2){
@@ -122,7 +165,7 @@ void Jogo::printVida(Jogador jog1, Jogador jog2){
     cout<< Linha5<<endl;
 }
 
-void Jogo::printCartasDefesa(Jogador jog1, Jogador jog2){
+void Jogo::printCartasDefesa(Jogador &jog1, Jogador &jog2){
     string Linha13;
     if(jog1.getCartasDefesa().size() == 0 && jog2.getCartasDefesa().size() == 0){
          Linha13 = "13    |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_] |                                |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_]  |";
@@ -161,7 +204,7 @@ void Jogo::printCartasDefesa(Jogador jog1, Jogador jog2){
     cout<<Linha13<<endl;
 }
 
-void Jogo::printCartasAtaque(Jogador jog1, Jogador jog2){
+void Jogo::printCartasAtaque(Jogador &jog1, Jogador &jog2){
     string Linha23;
     if(jog1.getCartasAtaque().size() == 0 && jog2.getCartasAtaque().size() == 0){
          Linha23 = "23    |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_] |                               |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_]  |";
@@ -200,7 +243,7 @@ void Jogo::printCartasAtaque(Jogador jog1, Jogador jog2){
     cout<<Linha23<<endl;
 }
 
-void Jogo::printCartasMovimento(Jogador jog1, Jogador jog2){
+void Jogo::printCartasMovimento(Jogador &jog1, Jogador &jog2){
     string Linha18;
     if(jog1.getCartasMovimento().size() == 0 && jog2.getCartasMovimento().size() == 0){
         Linha18 = "18    |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_] |         |   | "+monte.top().getCaracter()+"  |   |         |  [_NN_|_NN_|_NN_|_NN_|_NN_|_NN_|_NN_]  |";
@@ -283,4 +326,137 @@ void Jogo::printPosicao(Jogador jog1, Jogador jog2){
     
     string Linha34 = "34    | K  = Espada - Medio     = 2 ou 1  |     | "+vetorPosicoes[0]+" | "+vetorPosicoes[1]+" | "+vetorPosicoes[2]+" | "+vetorPosicoes[3]+" | "+vetorPosicoes[4]+" | "+vetorPosicoes[5]+" | "+vetorPosicoes[6]+" | "+vetorPosicoes[7]+" |     | 7 = Espada  - Medio   =-2 ou -1 |";
     cout<< Linha34 <<endl;
+}
+
+void Jogo::limpaTela(){
+    system("cls");
+}
+
+bool Jogo::validaMovimento(CartaMovimento _movimento, Jogador *j1, Jogador *j2, bool jog1){
+    vector<Carta> to_remove;
+    for(int i=0;i<j1->getCartasMovimento().size();i++){
+        if(j1->getCartasMovimento()[i].getCaracter() == _movimento.getCaracter()
+            && j1->getCartasMovimento()[i].getNaipe() == _movimento.getNaipe()){
+            Carta para_remover;
+            para_remover.setCaracter(j1->getCartasMovimento()[i].getCaracter());
+            para_remover.setNaipe(j1->getCartasMovimento()[i].getNaipe());
+
+            to_remove.push_back(para_remover);
+            monte.push(para_remover);
+            realizaMovimento(j1,j2,_movimento,jog1);
+            j1->removeCartaEmMao(to_remove);
+            return true;
+        }
+    }
+    return false;
+}
+
+pair<bool,pair<int,string>> Jogo::validaAtaque(CartaAtaque _ataque, Jogador *j1, Jogador &j2){
+    
+    //Guardando caracteres das cartas com as possíveis distâncias que elas podem ser utilizadas
+    map<string,pair<int,int>> caracter_distancia;
+
+    caracter_distancia.insert(make_pair("Q",make_pair(0,1)));
+    caracter_distancia.insert(make_pair("K",make_pair(2,3)));
+    caracter_distancia.insert(make_pair("J",make_pair(4,5)));
+    //
+
+    vector<Carta> to_remove;
+    for(int i=0;i<j1->getCartasAtaque().size();i++){
+        if(j1->getCartasAtaque()[i].getCaracter() == _ataque.getCaracter()
+            && j1->getCartasAtaque()[i].getNaipe() == _ataque.getNaipe()){
+            
+            int distancia = abs(j1->getPosicao()-j2.getPosicao())-1;
+
+            if(j1->getCartasAtaque()[i].getCaracter() != "10"){
+                if( distancia != (caracter_distancia.find(j1->getCartasAtaque()[i].getCaracter())->second).first
+                    && distancia != (caracter_distancia.find(j1->getCartasAtaque()[i].getCaracter())->second).second){
+                    return make_pair(false,make_pair(0,"N"));
+                }
+            }
+
+            Carta para_remover;
+            para_remover.setCaracter(j1->getCartasAtaque()[i].getCaracter());
+            para_remover.setNaipe(j1->getCartasAtaque()[i].getNaipe());
+
+            to_remove.push_back(para_remover);
+            monte.push(para_remover);
+
+            _ataque.setValor(distancia);
+            j1->removeCartaEmMao(to_remove);
+            return make_pair(true,make_pair(_ataque.getDano(),_ataque.getCaracter()));
+        }
+    }
+    return make_pair(false,make_pair(0,"N"));
+}
+
+pair<bool,int> Jogo::validaDefesa(Jogador *j1, Jogador &j2,CartaDefesa _defesa, string caracter_ataque){
+    //Guardando caracteres das cartas com os possíves caracteres que podem ser utilizados
+    map<string,string> caracter_caracter;
+
+    caracter_caracter.insert(make_pair("8","Q"));
+    caracter_caracter.insert(make_pair("7","K"));
+    caracter_caracter.insert(make_pair("9","J"));
+    //
+
+    vector<Carta> to_remove;
+    for(int i=0;i<j1->getCartasDefesa().size();i++){
+        if(j1->getCartasDefesa()[i].getCaracter() == _defesa.getCaracter()
+            && j1->getCartasDefesa()[i].getNaipe() == _defesa.getNaipe()){
+            
+            string caracter_atual = j1->getCartasDefesa()[i].getCaracter();
+            int distancia = abs(j1->getPosicao()-j2.getPosicao())-1;
+
+            if(j1->getCartasDefesa()[i].getCaracter() != "6"){
+                if( caracter_ataque != (caracter_caracter.find(caracter_atual)->second)
+                    && caracter_ataque != (caracter_caracter.find(caracter_atual)->second)){
+                    return make_pair(false,0);
+                }
+            }
+
+            Carta para_remover;
+            para_remover.setCaracter(j1->getCartasDefesa()[i].getCaracter());
+            para_remover.setNaipe(j1->getCartasDefesa()[i].getNaipe());
+
+            to_remove.push_back(para_remover);
+            monte.push(para_remover);
+
+            _defesa.setValor(distancia);
+            j1->removeCartaEmMao(to_remove);
+
+
+            return make_pair(true,_defesa.getDefesa());
+        }
+    }
+
+}
+
+void Jogo::realizaMovimento(Jogador *j1, Jogador *j2, CartaMovimento _movimento, bool jog1){
+    int distancia = abs(j1->getPosicao()-j2->getPosicao())-1;
+    _movimento.setValor(distancia);
+
+    if(jog1){
+        if( distancia == 0){
+            j2->setPosicao(j2->getPosicao()+(-_movimento.getMovimento()));
+        }else{
+            _movimento.setValor(distancia);
+            j1->setPosicao(j1->getPosicao()+_movimento.getMovimento());
+        }
+    }else{
+        if( distancia == 0){
+            _movimento.setValor(distancia);
+            j2->setPosicao(j2->getPosicao()+_movimento.getMovimento());
+        }else{
+            _movimento.setValor(distancia);
+            j1->setPosicao(j1->getPosicao()-_movimento.getMovimento());
+        }
+    }
+
+}
+
+void Jogo::pegaBaralho(Jogador *jog1, Baralho *br){
+    vector<Carta> toAdd;
+    toAdd.push_back(br->getTopo());
+    jog1->adicionaCartaEmMao(toAdd);
+    br->desempilha();
 }

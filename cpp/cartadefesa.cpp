@@ -37,3 +37,8 @@ void CartaDefesa::setValor(int _distancia){
 int CartaDefesa::getDefesa(){
     return this->qntDefesa;
 }
+
+CartaDefesa::CartaDefesa(string caracter, string naipe){
+    this->setCaracter(caracter);
+    this->setNaipe(naipe);
+}

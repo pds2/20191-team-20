@@ -28,7 +28,7 @@ void CartaAtaque::setValor(int _distancia){
                 this->qntDano = 1;
             }
         break;
-        case ('1'+'0'):
+        case ('1'):
             this->qntDano = 3;
         break;
     }
@@ -36,4 +36,9 @@ void CartaAtaque::setValor(int _distancia){
 
 int CartaAtaque::getDano(){
     return this->qntDano;
+}
+
+CartaAtaque::CartaAtaque(string simbolo, string naipe){
+    this->setCaracter(simbolo);
+    this->setNaipe(naipe);
 }

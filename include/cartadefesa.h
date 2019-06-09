@@ -10,6 +10,7 @@ class CartaDefesa : public Carta{
         int qntDefesa;
         int tipoDefesa;
     public:
+        CartaDefesa(string caracter, string naipe);
         void setValor(int _distancia) override;
         int getDefesa();
 };

@@ -13,6 +13,7 @@ class Baralho{
         void criarBaralho();
         void embaralhar();
         void setTipo(string _tipo);
+        void setCartas(vector<Carta> _cartas);
         string getTipo();
         vector<Carta> getBaralho();
         void desempilha();
