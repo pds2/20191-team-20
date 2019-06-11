@@ -7,6 +7,9 @@
 
 using namespace std;
 
+
+// Método responsável por dar o refresh na tela e são passados os parâmetros para dar esse dinamismo...
+
 void Jogo::atualizaTela(Jogador &jog1, Jogador &jog2, Baralho bar, string tipoCarta, bool defesa, bool mensagem_customizada, string mensagem, bool jog){
 
 string Linha1 =  "1\t\t\t\t\t   ___                                   ___";
@@ -18,7 +21,7 @@ string Linha7 =  "7       1   2   3   4   5   6   7   8   9   10          |   | 
 string Linha8 =  "8                                                       |   |    |   |                                                   ";
 string Linha9 =  "9      _______________________________________          |   |"+bar.getTopo().getNaipe()+"___|   |          ________________________________________ ";
 string Linha10 = "10    |                                       |         |            |         |                                        |";
-string Linha11 = "11    |                Defesa                 |         |__*Espaco*__|         |                 Defesa                 |";
+string Linha11 = "11    |                Defesa                 |         |__*   n  *__|         |                 Defesa                 |";
 string Linha12 = "12    |   __________________________________  |                                |   __________________________________   |";
 string Linha14 = "14    |    1    2    3    4    5    6     7   |          ____________          |    1    2    3    4    5    6    7     |";
 string Linha15 = "15    |                                       |         |    MESA    |         |                                        |";
@@ -102,28 +105,28 @@ cout << Linha42 << endl;
 
 }
 
-
+//Adiciona carta no monte do jogo
 void Jogo::adicionaMonte(Carta _carta){
     monte.push(_carta);
 }
 
+// Print da mensagem principal
 void Jogo::printMensagem(Jogador jog, string tipoCarta, bool defesa){
     string Linha28;
     if(defesa){
-        Linha28 = "28  \t  "+jog.getNome()+": Escolha uma carta '"+tipoCarta+"'(seu respectivo numero) ou aperte 'espaco' para receber o dano do ataque.";
+        Linha28 = "28  \t  "+jog.getNome()+": Escolha uma carta '"+tipoCarta+"'(seu respectivo numero) ou aperte 'n' para receber o dano do ataque.";
     }else{
-        Linha28 = "28  \t  "+jog.getNome()+": Escolha uma carta '"+tipoCarta+"'(seu respectivo numero) ou aperte 'espaco' para colher uma carta do baralho.";
+        Linha28 = "28  \t  "+jog.getNome()+": Escolha uma carta '"+tipoCarta+"'(seu respectivo numero) ou aperte 'n' para colher uma carta do baralho.";
     }
     cout<< Linha28 << endl;
 }
 
+// Print personalizado da mensagem principal
 void Jogo::printMensagem(string mensagem){
     cout<<"28"<<"                                                   "<< mensagem <<endl;
 }
-void Jogo::passaVez(Jogador jog){
 
-}
-
+// Método responsável por distribuir as cartas entre os jogadores
 void Jogo::distribuiCartas(Jogador &j1, Jogador &j2, Baralho &br){
 
     vector<Carta> adicionar;
@@ -143,6 +146,7 @@ void Jogo::distribuiCartas(Jogador &j1, Jogador &j2, Baralho &br){
 
 }
 
+// Método responsável por misturar os dois baralhos do jogo
 Baralho Jogo::misturaBaralhos(Baralho b1, Baralho b2){
     vector<Carta> novo;
     for(int i=0;i<52;i++){
@@ -154,6 +158,7 @@ Baralho Jogo::misturaBaralhos(Baralho b1, Baralho b2){
     return b;
 }
 
+// Método responsável por printar a vida dos jogadores
 void Jogo::printVida(Jogador jog1, Jogador jog2){
 
     string Linha5 =  "5     | "+jog1.getVida()[0]+" | "+jog1.getVida()[1]+" | " +jog1.getVida()[2]+
@@ -165,6 +170,7 @@ void Jogo::printVida(Jogador jog1, Jogador jog2){
     cout<< Linha5<<endl;
 }
 
+// Print das cartas da defesa de ambos os jogadores
 void Jogo::printCartasDefesa(Jogador &jog1, Jogador &jog2){
     string Linha13;
     if(jog1.getCartasDefesa().size() == 0 && jog2.getCartasDefesa().size() == 0){
@@ -204,6 +210,7 @@ void Jogo::printCartasDefesa(Jogador &jog1, Jogador &jog2){
     cout<<Linha13<<endl;
 }
 
+// Print das Cartas de Ataque de ambos os jogadores
 void Jogo::printCartasAtaque(Jogador &jog1, Jogador &jog2){
     string Linha23;
     if(jog1.getCartasAtaque().size() == 0 && jog2.getCartasAtaque().size() == 0){
@@ -243,6 +250,7 @@ void Jogo::printCartasAtaque(Jogador &jog1, Jogador &jog2){
     cout<<Linha23<<endl;
 }
 
+// Print das Cartas de Movimento de ambos os jogadores
 void Jogo::printCartasMovimento(Jogador &jog1, Jogador &jog2){
     string Linha18;
     if(jog1.getCartasMovimento().size() == 0 && jog2.getCartasMovimento().size() == 0){
@@ -282,6 +290,7 @@ void Jogo::printCartasMovimento(Jogador &jog1, Jogador &jog2){
     cout<<Linha18<<endl;
 }
 
+// Sets e gets
 void Jogo::setRoundJog1(int _round){
     this->rounds_Jog1 = _round;
 }
@@ -302,6 +311,9 @@ stack<Carta> Jogo::getMonte(){
     return this->monte;
 }
 
+//
+
+//Print da tela inicial para preechimento do nome e dos naipes especiais dos jogadores
 void Jogo::printTelaInicial(){
     cout << "\n\n\n\n";
     cout << "                      ########            ##   ##          ##      ||                    "<< endl;
@@ -312,6 +324,7 @@ void Jogo::printTelaInicial(){
     cout << "                      ########  ##   ##   ##  ##  @@@@  @  ##  $$  ||//)    @@@ @  ##    "<< endl;
 }
 
+// Método para printar a posição dos jogadores no jogo
 void Jogo::printPosicao(Jogador jog1, Jogador jog2){
     string vetorPosicoes[8];
     for(int i=0;i<8;i++){
@@ -332,6 +345,7 @@ void Jogo::limpaTela(){
     system("cls");
 }
 
+// Méotod para validar uma ação de movimento no jogo, Verificando se irá ocorrer um empurrão(distancia = 0) ou um movimento comum
 bool Jogo::validaMovimento(CartaMovimento _movimento, Jogador *j1, Jogador *j2, bool jog1){
     vector<Carta> to_remove;
     for(int i=0;i<j1->getCartasMovimento().size();i++){
@@ -351,6 +365,7 @@ bool Jogo::validaMovimento(CartaMovimento _movimento, Jogador *j1, Jogador *j2, 
     return false;
 }
 
+//Método para validar um ataque feito, de acordo com as posições dos jogadores
 pair<bool,pair<int,string>> Jogo::validaAtaque(CartaAtaque _ataque, Jogador *j1, Jogador &j2){
     
     //Guardando caracteres das cartas com as possíveis distâncias que elas podem ser utilizadas
@@ -390,6 +405,8 @@ pair<bool,pair<int,string>> Jogo::validaAtaque(CartaAtaque _ataque, Jogador *j1,
     return make_pair(false,make_pair(0,"N"));
 }
 
+
+// Método para validar as defesas feitas, de acordo com a relação Ataque/Defesa
 pair<bool,int> Jogo::validaDefesa(Jogador *j1, Jogador &j2,CartaDefesa _defesa, string caracter_ataque){
     //Guardando caracteres das cartas com os possíves caracteres que podem ser utilizados
     map<string,string> caracter_caracter;
@@ -431,6 +448,7 @@ pair<bool,int> Jogo::validaDefesa(Jogador *j1, Jogador &j2,CartaDefesa _defesa, 
 
 }
 
+//Executa o tipo de movimento(Normal ou Empurrão)
 void Jogo::realizaMovimento(Jogador *j1, Jogador *j2, CartaMovimento _movimento, bool jog1){
     int distancia = abs(j1->getPosicao()-j2->getPosicao())-1;
     _movimento.setValor(distancia);
@@ -454,6 +472,7 @@ void Jogo::realizaMovimento(Jogador *j1, Jogador *j2, CartaMovimento _movimento,
 
 }
 
+// Método para colher uma carta do baralho
 void Jogo::pegaBaralho(Jogador *jog1, Baralho *br){
     vector<Carta> toAdd;
     toAdd.push_back(br->getTopo());

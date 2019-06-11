@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// Metodo responsável por setar o valor da defesa da carta de acordo com a distancia e com seu respectivo símbolo
 void CartaAtaque::setValor(int _distancia){
     string caracter = Carta::getCaracter();
     switch (caracter[0]){
@@ -34,10 +35,12 @@ void CartaAtaque::setValor(int _distancia){
     }
 }
 
+//Get Dano
 int CartaAtaque::getDano(){
     return this->qntDano;
 }
 
+//Construtor 
 CartaAtaque::CartaAtaque(string simbolo, string naipe){
     this->setCaracter(simbolo);
     this->setNaipe(naipe);

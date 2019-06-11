@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// Método Para setar o valor da carta de movimento de acordo com a distância dos jogadores
 void CartaMovimento::setValor(int _distancia){
     string caracter = Carta::getCaracter();
     switch (caracter[0]){

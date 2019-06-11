@@ -28,6 +28,7 @@ string Carta::getTipoCarta(){
 }
 
 void Carta::setValor(int _distancia){
-
+    // Não é utilizado mas é necessário declará-lo visto que as classes que herdam de carta
+    // utilizam dessa função e a sobrescrevem sendo polimórficas.
 }
 

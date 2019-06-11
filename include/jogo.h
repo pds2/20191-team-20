@@ -11,7 +11,6 @@ class Jogo{
     public:
         void adicionaMonte(Carta _carta);
         void atualizaTela(Jogador &jog1, Jogador &jog2, Baralho bar, string tipoCarta, bool defesa, bool mensagem_customizada, string mensagem, bool jog);
-        void passaVez(Jogador jog);
         void printVida(Jogador jog1, Jogador jog2);
         void printCartasDefesa(Jogador &jog1, Jogador &jog2);
         void printCartasAtaque(Jogador &jog1, Jogador &jog2);

@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// Método para setar a defesa da carta de acordo com a distância dos jogadores
 void CartaDefesa::setValor(int _distancia){
     string caracter = Carta::getCaracter();
     switch (caracter[0]){
